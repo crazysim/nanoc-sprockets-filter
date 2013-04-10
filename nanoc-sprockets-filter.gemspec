@@ -2,8 +2,8 @@
 require File.expand_path('../lib/nanoc/filters/sprockets', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ['Yann Lugrin']
-  gem.email         = ['yann.lugrin@sans-savoir.net']
+  gem.authors       = ['Yann Lugrin', 'Nelson Chen']
+  gem.email         = ['yann.lugrin@sans-savoir.net', 'crazysim@gmail.com']
   gem.description   = %q{A nanoc filter to use Sprockets, a Ruby library for compiling and serving web assets.}
   gem.summary       = %q{A nanoc filter to use Sprockets, a Ruby library for compiling and serving web assets.}
   gem.homepage      = 'https://github.com/yannlugrin/nanoc-sprockets-filter'
