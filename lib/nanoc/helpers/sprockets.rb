@@ -19,7 +19,7 @@ module Nanoc
           end
           filename = File.basename(filename).gsub(/^(\w+\.\w+).*/, '\1')
 
-          if rep_name = options.delete(:rep)
+          if rep_name == options.delete(:rep)
             rep_prefix = rep_name.to_s + '_'
           else
             rep_prefix = ''
