@@ -12,10 +12,15 @@ module Nanoc
         $stderr = STDERR
 
         environment = ::Sprockets::Environment.new(File.expand_path('.')) do |env|
-          assets =  ['javascripts', 'stylesheets', 'images', 'fonts']
-          paths =   ['content/assets/', 'lib/assets/', 'assets/', 'vendor/assets/' ].map{|p| assets.map{|f| "#{p}#{f}" } }.flatten
+          # Paths where a nanoc project might have its assets for sprockets
+          paths =  %w(content/assets/ lib/assets/ assets/ vendor/assets/)
+          # Paths underneath a sprocketized asset folder in nanoc
+          assets = %w(javascripts stylesheets images fonts)
 
-          paths.each{ |path| env.append_path path }
+          paths.product(assets).map do |asset, path|
+            env.append_path(asset + path)
+          end
+
         end
 
         $stderr = nanoc_stderr
