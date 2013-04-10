@@ -8,6 +8,7 @@ module Nanoc
       type :text
 
       def self.environment
+        # Save STDERR
         nanoc_stderr = $stderr
         $stderr = STDERR
 
@@ -20,9 +21,9 @@ module Nanoc
           paths.product(assets).map do |asset, path|
             env.append_path(asset + path)
           end
-
         end
 
+        # Restore STDERR
         $stderr = nanoc_stderr
 
         environment
@@ -38,7 +39,7 @@ module Nanoc
         environment.css_compressor = params[:css_compressor]
         environment.js_compressor  = params[:js_compressor]
 
-        if asset = environment[filename]
+        if asset == environment[filename]
           asset.to_s
         else
           raise "error locating #{filename} / #{@item[:filename]}"
